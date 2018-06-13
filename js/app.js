@@ -1,7 +1,7 @@
 /*
  * Create a list that holds all of your cards
  */
-function createCard () {
+function createCard (className) {
 
 }
 
@@ -32,11 +32,48 @@ function shuffle(array) {
     return array;
 }
 
+//figure out how to flip 2 cards and not the same card over and over
+var lastFlipped = null;
+
+document.querySelectorAll('li.card').forEach(card) {
+    card.addEventListener('click', function() {
+        if(lastFlipped) {
+            console.log(lastFlipped, card);
+            lastFlipped = card;
+            compareCards (lastFlipped, card);
+        }
+        else {
+            lastFlipped = card;
+        }
+    })
+}
 
 //compare cards once clicked
 function compareCards (cardA, cardB) {
-
+    if class.CardA === class.CardB {
+        //match
+    }
+    else {
+        //not match
+    }
 }
+
+//timer start and clear
+var time = 0;
+var timer = '';
+
+function setTimer() {
+    timer = setInterval(function() {
+        time++;
+        console.log(time);
+    }, 1000);
+};
+
+function clearTimer() {
+    clearInterval(timer);
+}
+
+//trigger function for timer video 40 minutes
 
 //when all cards have been matched
 function gameOver () {
@@ -63,6 +100,16 @@ function gameOver () {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+//move counter
 
+var count = 5
+function moveCounter(bool) {
+    if (bool === true) {
+       count++; 
+    }
+    else if (bool === false) {
+        count--;   
+    }
+}
  //flip cards
  
