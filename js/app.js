@@ -51,7 +51,9 @@ document.querySelectorAll('li.card').forEach(card) {
 //compare cards once clicked
 function compareCards (cardA, cardB) {
     if class.CardA === class.CardB {
-        //match
+        class.remove (open show);
+        class.add (match);
+        removeEventListener;
     }
     else {
         //not match
