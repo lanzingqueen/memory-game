@@ -42,18 +42,29 @@ document.querySelectorAll('li.card').forEach(function(card) {
             return;
         }
         if(lastFlipped) {
+            card.classList.add('open', 'show');
             console.log("second ", lastFlipped, card);
+            setTimeout(function() {
+                if (lastFlipped.firstElementChild.classList[1] === card.firstElementChild.classList[1]) {
+                    console.log ("matched, yo!");
+                    lastFlipped.classList.remove('open', 'show');
+                    lastFlipped.classList.add('match');
+                    card.classList.remove('open', 'show');
+                    card.classList.add('match');
+                }
+                else {
+                    lastFlipped.classList.remove('open', 'show');
+                    card.classList.remove('open', 'show');
+                    console.log("wrong");
+                }
+                lastFlipped = null;
+            }, 200);
           //  compareCards (lastFlipped, card);
-            if (lastFlipped.firstElementChild.classList[1] === card.firstElementChild.classList[1]) {
-                console.log ("matched, yo!");
-                lastFlipped.classList.remove('open', 'show');
-                lastFlipped.classList.add('match');
-                card.classList.remove('open', 'show');
-                card.classList.add('match');
-            }
+            
         }
         else {
             lastFlipped = card;
+            lastFlipped.classList.add('open', 'show');
             console.log("first clicked card ", card, card.firstElementChild, card.firstElementChild.classList[1])
         }
     })
@@ -95,7 +106,7 @@ function gameOver () {
 
 /*
  * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)*/
+ *  - display the card's symbol (put this functionality in another function that you call from this one)
 
  const allCards = document.querySelectorAll('.card');
 
@@ -105,7 +116,7 @@ function gameOver () {
     });
  });
 
-/*  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
+  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
  *  - if the list already has another card, check to see if the two cards match
  *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
  *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
