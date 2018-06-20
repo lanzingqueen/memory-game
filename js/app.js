@@ -37,13 +37,24 @@ var lastFlipped = null;
 
 document.querySelectorAll('li.card').forEach(function(card) {
     card.addEventListener('click', function() {
+        if (card.classList.contains('match')) {
+            console.log("leave it alone");
+            return;
+        }
         if(lastFlipped) {
-            console.log(lastFlipped, card);
-            lastFlipped = card;
-            compareCards (lastFlipped, card);
+            console.log("second ", lastFlipped, card);
+          //  compareCards (lastFlipped, card);
+            if (lastFlipped.firstElementChild.classList[1] === card.firstElementChild.classList[1]) {
+                console.log ("matched, yo!");
+                lastFlipped.classList.remove('open', 'show');
+                lastFlipped.classList.add('match');
+                card.classList.remove('open', 'show');
+                card.classList.add('match');
+            }
         }
         else {
             lastFlipped = card;
+            console.log("first clicked card ", card, card.firstElementChild, card.firstElementChild.classList[1])
         }
     })
 })
