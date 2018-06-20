@@ -35,7 +35,7 @@ function shuffle(array) {
 //figure out how to flip 2 cards and not the same card over and over
 var lastFlipped = null;
 
-document.querySelectorAll('li.card').forEach(card) {
+document.querySelectorAll('li.card').forEach(function(card) {
     card.addEventListener('click', function() {
         if(lastFlipped) {
             console.log(lastFlipped, card);
@@ -46,10 +46,10 @@ document.querySelectorAll('li.card').forEach(card) {
             lastFlipped = card;
         }
     })
-}
+})
 
 //compare cards once clicked
-function compareCards (cardA, cardB) {
+/*function compareCards (cardA, cardB) {
     if class.CardA === class.CardB {
         class.remove (open show);
         class.add (match);
@@ -58,7 +58,7 @@ function compareCards (cardA, cardB) {
     else {
         //not match
     }
-}
+}*/
 
 //timer start and clear
 var time = 0;
@@ -89,7 +89,7 @@ function gameOver () {
  const allCards = document.querySelectorAll('.card');
 
  allCards.forEach(function(card) {
-    card.addEventListener('click', function(e) {
+    card.addEventListener('click', function() {
         card.classList.add('open', 'show')
     });
  });
