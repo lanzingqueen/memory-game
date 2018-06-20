@@ -1,7 +1,7 @@
 /*
  * Create a list that holds all of your cards
  */
-document.getElementsByClassName("repeat").addEventListener('click', function() {
+document.getElementsByClassName('restart')[0].addEventListener('click', function() {
     document.querySelectorAll('li.card').forEach(function(card) {
         card.classList.remove('open', 'show', 'match');
     });
