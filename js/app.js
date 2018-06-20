@@ -1,7 +1,13 @@
 /*
  * Create a list that holds all of your cards
  */
-function createCard (className) {
+document.getElementsByClassName("repeat").addEventListener('click', function() {
+    document.querySelectorAll('li.card').forEach(function(card) {
+        card.classList.remove('open', 'show', 'match');
+    });
+});
+
+ function createCard (className) {
 
 }
 
@@ -97,7 +103,7 @@ function clearTimer() {
     clearInterval(timer);
 }
 
-//trigger function for timer video 40 minutes
+
 
 //when all cards have been matched
 function gameOver () {
