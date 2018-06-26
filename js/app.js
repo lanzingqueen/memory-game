@@ -5,18 +5,23 @@ document.getElementsByClassName('restart')[0].addEventListener('click', function
     document.querySelectorAll('li.card').forEach(function(card) {
         card.classList.remove('open', 'show', 'match');
     });
+    //shuffle(document.getElementsByClassName('card'));
+    console.log(document.getElementsByClassName('card'))
+    var deck = document.getElementsByClassName('card');
+    deckArr = [];
+    for(var i = 0; i < deck.length; i++) {
+        deckArr.push(deck[i]);
+    }
+    deckArr = shuffle(deckArr);
+    console.log(deckArr);
+    deck.innerHTML = "";
+    document.getElementById("deck").innerHTML = "";
+    for(var i = 0; i < deckArr.length; i++) {
+        document.getElementById("deck").appendChild(deckArr[i]);
+    }
+    clearTimer();
 });
 
- function createCard (className) {
-
-}
-
-/*
- * Display the cards on the page*/
-
-function createGameBoard () {
-
-}
 
  /*   - shuffle the list of cards using the provided "shuffle" method below
  *   - loop through each card and create its HTML
@@ -34,20 +39,40 @@ function shuffle(array) {
         array[currentIndex] = array[randomIndex];
         array[randomIndex] = temporaryValue;
     }
-
+    console.log('shuffled');
+    console.log(array);
     return array;
 }
 
 //figure out how to flip 2 cards and not the same card over and over
 var lastFlipped = null;
+var shouldClickable = true;
 
 document.querySelectorAll('li.card').forEach(function(card) {
     card.addEventListener('click', function() {
+       //move this to somewhere else
+       var star = document.getElementsByClassName("fa-star")[0];
+       star.parentNode.removeChild(star);
+       console.log(star)
+       //
+
+        if (shouldClickable === false) {
+            console.log('cannot click again');
+            return;
+        }
+        if (lastFlipped === card) {
+            console.log('stop clicking yourself!');
+            return;
+        }
         if (card.classList.contains('match')) {
             console.log("leave it alone");
             return;
         }
+        if (timer === undefined) {
+            setTimer();
+        }
         if(lastFlipped) {
+            shouldClickable = false;
             card.classList.add('open', 'show');
             console.log("second ", lastFlipped, card);
             setTimeout(function() {
@@ -64,7 +89,8 @@ document.querySelectorAll('li.card').forEach(function(card) {
                     console.log("wrong");
                 }
                 lastFlipped = null;
-            }, 200);
+                shouldClickable = true;
+            }, 300);
           //  compareCards (lastFlipped, card);
             
         }
@@ -90,17 +116,34 @@ document.querySelectorAll('li.card').forEach(function(card) {
 
 //timer start and clear
 var time = 0;
-var timer = '';
+var timer = undefined;
 
 function setTimer() {
     timer = setInterval(function() {
         time++;
+        var str = "";
+        var minutes = Math.floor(time/60);
+        if (minutes >= 0 && minutes <= 9) {
+            str += "0" + minutes;
+        } else {
+            str += minutes;
+        }
+        str+=":";
+        var seconds = time % 60;
+        if(seconds >=0 && seconds <=9) {
+            str += "0" + seconds;
+        } else {
+            str += seconds;
+        }
         console.log(time);
+        document.getElementById('timer').innerHTML=str;
     }, 1000);
 };
 
 function clearTimer() {
     clearInterval(timer);
+    timer = undefined;
+    time = 0;
 }
 
 
@@ -132,13 +175,13 @@ function gameOver () {
 
 //move counter
 
-var count = 5
-function moveCounter(bool) {
+let move = 0;
+function addMove() {
     if (bool === true) {
-       count++; 
+       move++; 
     }
     else if (bool === false) {
-        count--;   
+        move--;   
     }
 }
  //flip cards
