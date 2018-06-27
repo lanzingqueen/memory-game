@@ -50,7 +50,7 @@ var shouldClickable = true;
 
 document.querySelectorAll('li.card').forEach(function(card) {
     card.addEventListener('click', function() {
-       //move this to somewhere else
+       //move this to somewhere else and make sure it doesn't get confused
        var star = document.getElementsByClassName("fa-star")[0];
        star.parentNode.removeChild(star);
        console.log(star)
