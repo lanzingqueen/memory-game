@@ -48,59 +48,63 @@ function shuffle(array) {
 var lastFlipped = null;
 var shouldClickable = true;
 
-document.querySelectorAll('li.card').forEach(function(card) {
-    card.addEventListener('click', function() {
-       //move this to somewhere else and make sure it doesn't get confused
-       var star = document.getElementsByClassName("fa-star")[0];
-       star.parentNode.removeChild(star);
-       console.log(star)
-       //
+function cardClicked(event) {
+    card = event.target;
+    //move this to somewhere else and make sure it doesn't get confused
+    var star = document.getElementsByClassName("fa-star")[0];
+    star.parentNode.removeChild(star);
+    console.log(star)
+    //
 
-        if (shouldClickable === false) {
-            console.log('cannot click again');
-            return;
-        }
-        if (lastFlipped === card) {
-            console.log('stop clicking yourself!');
-            return;
-        }
-        if (card.classList.contains('match')) {
-            console.log("leave it alone");
-            return;
-        }
-        if (timer === undefined) {
-            setTimer();
-        }
-        if(lastFlipped) {
-            shouldClickable = false;
-            card.classList.add('open', 'show');
-            console.log("second ", lastFlipped, card);
-            setTimeout(function() {
-                if (lastFlipped.firstElementChild.classList[1] === card.firstElementChild.classList[1]) {
-                    console.log ("matched, yo!");
-                    lastFlipped.classList.remove('open', 'show');
-                    lastFlipped.classList.add('match');
-                    card.classList.remove('open', 'show');
-                    card.classList.add('match');
-                }
-                else {
-                    lastFlipped.classList.remove('open', 'show');
-                    card.classList.remove('open', 'show');
-                    console.log("wrong");
-                }
-                lastFlipped = null;
-                shouldClickable = true;
-            }, 300);
-          //  compareCards (lastFlipped, card);
-            
-        }
-        else {
-            lastFlipped = card;
-            lastFlipped.classList.add('open', 'show');
-            console.log("first clicked card ", card, card.firstElementChild, card.firstElementChild.classList[1])
-        }
-    })
-})
+     if (shouldClickable === false) {
+         console.log('cannot click again');
+         return;
+     }
+     if (lastFlipped === card) {
+         console.log('stop clicking yourself!');
+         return;
+     }
+     if (card.classList.contains('match')) {
+         console.log("leave it alone");
+         return;
+     }
+     if (timer === undefined) {
+         setTimer();
+     }
+     if(lastFlipped) {
+         shouldClickable = false;
+         card.classList.add('open', 'show');
+         console.log("second ", lastFlipped, card);
+         setTimeout(function() {
+             if (lastFlipped.firstElementChild.classList[1] === card.firstElementChild.classList[1]) {
+                 console.log ("matched, yo!");
+                 lastFlipped.classList.remove('open', 'show');
+                 lastFlipped.classList.add('match');
+                 card.classList.remove('open', 'show');
+                 card.classList.add('match');
+             }
+             else {
+                 lastFlipped.classList.remove('open', 'show');
+                 card.classList.remove('open', 'show');
+                 console.log("wrong");
+             }
+             lastFlipped = null;
+             shouldClickable = true;
+         }, 300);
+       //  compareCards (lastFlipped, card);
+         
+     }
+     else {
+         lastFlipped = card;
+         lastFlipped.classList.add('open', 'show');
+         console.log("first clicked card ", card, card.firstElementChild, card.firstElementChild.classList[1])
+     }
+ }
+function eachCard(card) {
+    card.addEventListener('click', cardClicked);    
+}
+
+document.querySelectorAll('li.card').forEach(eachCard);
 
 //compare cards once clicked
 /*function compareCards (cardA, cardB) {
@@ -175,7 +179,7 @@ function gameOver () {
 
 //move counter
 
-let move = 0;
+var move = 0;
 function addMove() {
     if (bool === true) {
        move++; 
