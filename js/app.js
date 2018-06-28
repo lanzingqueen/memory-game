@@ -20,6 +20,7 @@ document.getElementsByClassName('restart')[0].addEventListener('click', function
         document.getElementById("deck").appendChild(deckArr[i]);
     }
     clearTimer();
+    resetMoves();
 });
 
 
@@ -50,10 +51,11 @@ var shouldClickable = true;
 
 function cardClicked(event) {
     card = event.target;
+    addMove();
     //move this to somewhere else and make sure it doesn't get confused
-    var star = document.getElementsByClassName("fa-star")[0];
-    star.parentNode.removeChild(star);
-    console.log(star)
+    //var star = document.getElementsByClassName("fa-star")[0];
+    //star.parentNode.removeChild(star);
+    //console.log(star)
     //
 
      if (shouldClickable === false) {
@@ -148,6 +150,7 @@ function clearTimer() {
     clearInterval(timer);
     timer = undefined;
     time = 0;
+    document.getElementById('timer').innerHTML='00:00';
 }
 
 
@@ -181,12 +184,16 @@ function gameOver () {
 
 var move = 0;
 function addMove() {
-    if (bool === true) {
-       move++; 
-    }
-    else if (bool === false) {
-        move--;   
-    }
+    move++;
+    console.log(move);
+    movesText = document.querySelector('#moves');
+    movesText.innerHTML = move;
+    console.log('Move added');
 }
- //flip cards
+
+function resetMoves() {
+    move = 0;
+    movesText = document.querySelector('#moves');
+    movesText.innerHTML = move;
+}
  
