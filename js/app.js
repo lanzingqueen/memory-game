@@ -184,13 +184,13 @@ function addMove() {
     movesText.innerHTML = move;
     console.log('Move added');
     //move this to somewhere else and make sure it doesn't get confused
-    if (move == 5) {
+    if (move == 20) {
         var star = document.getElementById("stars").firstElementChild;
         star.classList.add('hide-star');
 
         console.log("star removed ,",star)
     } 
-    if (move == 7) {
+    if (move == 30) {
         var star = document.getElementById("stars").children[1];
         star.classList.add('hide-star');
 
