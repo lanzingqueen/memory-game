@@ -21,6 +21,7 @@ document.getElementsByClassName('restart')[0].addEventListener('click', function
     }
     clearTimer();
     resetMoves();
+    resetStars();
 });
 
 
@@ -52,12 +53,6 @@ var shouldClickable = true;
 function cardClicked(event) {
     card = event.target;
     addMove();
-    //move this to somewhere else and make sure it doesn't get confused
-    //var star = document.getElementsByClassName("fa-star")[0];
-    //star.parentNode.removeChild(star);
-    //console.log(star)
-    //
-
      if (shouldClickable === false) {
          console.log('cannot click again');
          return;
@@ -153,8 +148,6 @@ function clearTimer() {
     document.getElementById('timer').innerHTML='00:00';
 }
 
-
-
 //when all cards have been matched
 function gameOver () {
 
@@ -183,12 +176,26 @@ function gameOver () {
 //move counter
 
 var move = 0;
+starsRemoved = []
 function addMove() {
     move++;
     console.log(move);
     movesText = document.querySelector('#moves');
     movesText.innerHTML = move;
     console.log('Move added');
+    //move this to somewhere else and make sure it doesn't get confused
+    if (move == 5) {
+        var star = document.getElementById("stars").firstElementChild;
+        star.classList.add('hide-star');
+
+        console.log("star removed ,",star)
+    } 
+    if (move == 7) {
+        var star = document.getElementById("stars").children[1];
+        star.classList.add('hide-star');
+
+        console.log("star removed 22,",star)
+    }
 }
 
 function resetMoves() {
@@ -196,4 +203,10 @@ function resetMoves() {
     movesText = document.querySelector('#moves');
     movesText.innerHTML = move;
 }
- 
+
+function resetStars() {
+    var star1=document.getElementById('stars').children[0];
+    var star2=document.getElementById('stars').children[1];
+    star1.classList.remove('hide-star');
+    star2.classList.remove('hide-star');
+}    
