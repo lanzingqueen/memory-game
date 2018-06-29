@@ -49,6 +49,7 @@ function shuffle(array) {
 //figure out how to flip 2 cards and not the same card over and over
 var lastFlipped = null;
 var shouldClickable = true;
+var matchCount = 0;
 
 function cardClicked(event) {
     card = event.target;
@@ -79,6 +80,8 @@ function cardClicked(event) {
                  lastFlipped.classList.add('match');
                  card.classList.remove('open', 'show');
                  card.classList.add('match');
+                 //matchCount ++;
+                 //console.log(matchCount);
              }
              else {
                  lastFlipped.classList.remove('open', 'show');
@@ -88,9 +91,8 @@ function cardClicked(event) {
              lastFlipped = null;
              shouldClickable = true;
          }, 300);
-       //  compareCards (lastFlipped, card);
-         
      }
+     //  compareCards (lastFlipped, card);
      else {
          lastFlipped = card;
          lastFlipped.classList.add('open', 'show');
@@ -102,18 +104,6 @@ function eachCard(card) {
 }
 
 document.querySelectorAll('li.card').forEach(eachCard);
-
-//compare cards once clicked
-/*function compareCards (cardA, cardB) {
-    if class.CardA === class.CardB {
-        class.remove (open show);
-        class.add (match);
-        removeEventListener;
-    }
-    else {
-        //not match
-    }
-}*/
 
 //timer start and clear
 var time = 0;
@@ -149,32 +139,21 @@ function clearTimer() {
 }
 
 //when all cards have been matched
-function gameOver () {
-
+function gameOver() {
+    var modal = document.getElementById('congrats');
+    var span = document.getElementsByClassName("close")[0];
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    modal.style.display = "block";
 }
 
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
-
- const allCards = document.querySelectorAll('.card');
-
- allCards.forEach(function(card) {
-    card.addEventListener('click', function() {
-        card.classList.add('open', 'show')
-    });
- });
-
-  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
-
 //move counter
-
 var move = 0;
 starsRemoved = []
 function addMove() {
