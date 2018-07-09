@@ -22,6 +22,7 @@ document.getElementsByClassName('restart')[0].addEventListener('click', function
     clearTimer();
     resetMoves();
     resetStars();
+    resetMatches();
 });
 
 
@@ -83,6 +84,7 @@ function cardClicked(event) {
                  matchCount++;
                  if (matchCount === 8) {
                      console.log ('pop-up goes here');
+                    gameOver();
                  };
                  //console.log(matchCount + " Match");
              }
@@ -180,6 +182,10 @@ function addMove() {
     }
 }
 
+function resetMatches() {
+    matchCount = 0;
+
+}
 function resetMoves() {
     move = 0;
     movesText = document.querySelector('#moves');
