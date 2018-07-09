@@ -80,8 +80,11 @@ function cardClicked(event) {
                  lastFlipped.classList.add('match');
                  card.classList.remove('open', 'show');
                  card.classList.add('match');
-                 //matchCount ++;
-                 //console.log(matchCount);
+                 matchCount++;
+                 if (matchCount === 8) {
+                     console.log ('pop-up goes here');
+                 };
+                 //console.log(matchCount + " Match");
              }
              else {
                  lastFlipped.classList.remove('open', 'show');
@@ -169,7 +172,7 @@ function addMove() {
 
         console.log("star removed ,",star)
     } 
-    if (move == 30) {
+    if (move == 25) {
         var star = document.getElementById("stars").children[1];
         star.classList.add('hide-star');
 
