@@ -6,14 +6,14 @@ document.getElementsByClassName('restart')[0].addEventListener('click', function
         card.classList.remove('open', 'show', 'match');
     });
     //shuffle(document.getElementsByClassName('card'));
-    console.log(document.getElementsByClassName('card'))
+    //console.log(document.getElementsByClassName('card'))
     var deck = document.getElementsByClassName('card');
     deckArr = [];
     for(var i = 0; i < deck.length; i++) {
         deckArr.push(deck[i]);
     }
     deckArr = shuffle(deckArr);
-    console.log(deckArr);
+    //console.log(deckArr);
     deck.innerHTML = "";
     document.getElementById("deck").innerHTML = "";
     for(var i = 0; i < deckArr.length; i++) {
@@ -43,7 +43,7 @@ function shuffle(array) {
         array[randomIndex] = temporaryValue;
     }
     console.log('shuffled');
-    console.log(array);
+    //console.log(array);
     return array;
 }
 
