@@ -133,8 +133,9 @@ function setTimer() {
         }
         console.log(time);
         //document.getElementsByClassName('timer').innerHTML=str;
-        document.getElementsByClassName('timer')
-        //document.getElementById('timer').innerHTML=str;
+        document.querySelectorAll('.timer').forEach(function(timer) {
+            timer.innerHTML=str;
+        });
     }, 1000);
 };
 
@@ -142,7 +143,9 @@ function clearTimer() {
     clearInterval(timer);
     timer = undefined;
     time = 0;
-    document.getElementById('timer').innerHTML='00:00';
+    document.querySelectorAll('.timer').forEach(function(timer) {
+        timer.innerHTML='0:00';
+    });
 }
 
 //when all cards have been matched
@@ -159,34 +162,45 @@ function gameOver() {
     }
     modal.style.display = "block";
     pauseTimer();
+    modalStars();
 }
 
 //move counter
 var move = 0;
-starsRemoved = []
+starsRemoved = 0;
 function addMove() {
     move++;
     console.log(move);
-    movesText = document.querySelector('#moves');
-    movesText.innerHTML = move;
+    movesText = document.querySelectorAll('.moves').forEach(function(moves){
+        moves.innerHTML=Math.floor(move/2);
+    });
+    //movesText.innerHTML = move;
     console.log('Move added');
     //move this to somewhere else and make sure it doesn't get confused
     if (move == 20) {
         var star = document.getElementById("stars").firstElementChild;
         star.classList.add('hide-star');
-
-        console.log("star removed ,",star)
+        starsRemoved++;
+        //console.log("star removed ,",star)
     } 
     if (move == 25) {
         var star = document.getElementById("stars").children[1];
         star.classList.add('hide-star');
-        console.log("star removed ,",star)
+        //console.log("star removed ,",star)
+        starsRemoved++;
     }
+    console.log('Stars Removed = ' + starsRemoved);
 }
 
 function pauseTimer() {
     console.log('timer paused');
-    //timer.pause();
+    clearInterval(timer);
+}
+
+function modalStars() {
+    var starCount = '';
+    starCount = '' + (3-starsRemoved);
+    var star = document.querySelector('#modal-stars').innerHTML = starCount;// get star here;
 }
 
 function resetMatches() {
@@ -194,7 +208,7 @@ function resetMatches() {
 }
 function resetMoves() {
     move = 0;
-    movesText = document.querySelector('#moves');
+    movesText = document.querySelector('.moves');
     movesText.innerHTML = move;
 }
 
