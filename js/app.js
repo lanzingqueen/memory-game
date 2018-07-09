@@ -132,7 +132,9 @@ function setTimer() {
             str += seconds;
         }
         console.log(time);
-        document.getElementById('timer').innerHTML=str;
+        //document.getElementsByClassName('timer').innerHTML=str;
+        document.getElementsByClassName('timer')
+        //document.getElementById('timer').innerHTML=str;
     }, 1000);
 };
 
