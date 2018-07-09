@@ -1,7 +1,8 @@
 /*
  * Create a list that holds all of your cards
  */
-document.getElementsByClassName('restart')[0].addEventListener('click', function() {
+document.getElementsByClassName('restart')[0].addEventListener('click', reset);
+function reset() {
     document.querySelectorAll('li.card').forEach(function(card) {
         card.classList.remove('open', 'show', 'match');
     });
@@ -19,11 +20,13 @@ document.getElementsByClassName('restart')[0].addEventListener('click', function
     for(var i = 0; i < deckArr.length; i++) {
         document.getElementById("deck").appendChild(deckArr[i]);
     }
+    var modal = document.getElementById('congrats');
+    modal.style.display = "none";
     clearTimer();
     resetMoves();
     resetStars();
     resetMatches();
-});
+}
 
 
  /*   - shuffle the list of cards using the provided "shuffle" method below
@@ -217,4 +220,5 @@ function resetStars() {
     var star2=document.getElementById('stars').children[1];
     star1.classList.remove('hide-star');
     star2.classList.remove('hide-star');
+    starsRemoved = 0;
 }    
