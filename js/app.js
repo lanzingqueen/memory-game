@@ -83,7 +83,7 @@ function cardClicked(event) {
                  card.classList.add('match');
                  matchCount++;
                  if (matchCount === 8) {
-                     console.log ('pop-up goes here');
+                    console.log ('pop-up goes here');
                     gameOver();
                  };
                  //console.log(matchCount + " Match");
@@ -156,6 +156,7 @@ function gameOver() {
         }
     }
     modal.style.display = "block";
+    pauseTimer();
 }
 
 //move counter
@@ -177,14 +178,17 @@ function addMove() {
     if (move == 25) {
         var star = document.getElementById("stars").children[1];
         star.classList.add('hide-star');
-
-        console.log("star removed 22,",star)
+        console.log("star removed ,",star)
     }
+}
+
+function pauseTimer() {
+    console.log('timer paused');
+    //timer.pause();
 }
 
 function resetMatches() {
     matchCount = 0;
-
 }
 function resetMoves() {
     move = 0;
