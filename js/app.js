@@ -182,41 +182,48 @@ function addMove() {
         moves.innerHTML=Math.floor(move/2);
     });
     console.log('Move added');
-    if (move == 20) {
+    //decrease star ratings
+    if (move == 25) {
         let star = document.getElementById("stars").firstElementChild;
         star.classList.add('hide-star');
         starsRemoved++;
         //console.log("star removed ,",star)
     } 
-    if (move == 25) {
+    if (move == 35) {
         let star = document.getElementById("stars").children[1];
         star.classList.add('hide-star');
         //console.log("star removed ,",star)
         starsRemoved++;
     }
-    console.log(`Stars Removed = ${starsRemoved}`);
+    //console.log(`Stars Removed = ${starsRemoved}`);
 }
 
+//pause timer when game is over
 function pauseTimer() {
     console.log('timer paused');
     clearInterval(timer);
 }
 
+//reset stars in the modal pop-up
 function modalStars() {
     let starCount = '';
     starCount = `${3-starsRemoved}`;
     let star = document.querySelector('#modal-stars').innerHTML = starCount;
 }
 
+//reset match counter
 function resetMatches() {
     matchCount = 0;
 }
+
+//reset move counter
 function resetMoves() {
     move = 0;
     movesText = document.querySelector('.moves');
     movesText.innerHTML = move;
 }
 
+//reset stars
 function resetStars() {
     let star1=document.getElementById('stars').children[0];
     let star2=document.getElementById('stars').children[1];
