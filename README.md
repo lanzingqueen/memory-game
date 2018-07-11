@@ -1,20 +1,51 @@
+
+
+
+
+
+# Installation
+
+To install this project:
+  - Clone or fork this repository from GitHub
 # Memory Game Project
+
+This memory game is a fun game for all ages, and a great way to exercise your brain. The interface is clean and simple.
 
 ## Table of Contents
 
+* [Motivation](#motivation)
 * [Instructions](#instructions)
-* [Contributing](#contributing)
+* [Credits](#credits)
+
+## Motivation
+
+This memory game was completed as part of my education through Grow with Google Scholarship for a Front-End Nanodegree from Udacity. 
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+To play and view the game, open `index.html` in your browser
 
-To get started, open `js/app.js` and start building out the app's functionality
+To get make any functional changes or look under the hood, open `js/app.js`
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
 
-## Contributing
+## Credits
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+# Starter Code
 
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+This project was developed from the started code provided by Udacity here:  https://github.com/udacity/fend-project-memory-game.
+
+I created functionality in JavaScript, and changed a few things in the HTML and CSS.
+
+The modal and some other functionality was found online using StackOverflow and W3 Schools.
+
+Giant shout-out to my dear friends, family members, and fellow scholarship recipients, without whom I would have never had the courage to finish this project.
+
+# Code Example
+
+- When a user clicks on the first card, the time starts and the first card is flipped
+- When the second card is clicked, the second card is flipped and compared to the first card
+- The move counter increases with every two cards flipped
+- Once two non-matching cards are flipped, they display for a short time and flip back over
+- Once a match is made, the cards change color, and the cards can no longer be clicked to flip
+- When all matches are made, a modal pops up displaying the star rating, move counter, and time to complete
+- When a user clicks the reset or play again button, the deck shuffles, the move counter resets, the star rating resets, and the timer resets
