@@ -38,7 +38,9 @@ I created functionality in JavaScript, and changed a few things in the HTML and 
 
 The modal and some other functionality was found online using StackOverflow and W3 Schools.
 
-Giant shout-out to my dear friends, family members, and fellow scholarship recipients, without whom I would have never had the courage to finish this project.
+# Dependencies
+
+This project is written with JavaScript, HTML, and CSS.  If you are running an internet browser which does not support these technologies, you will need to use a different browser.
 
 # Code Example
 

@@ -221,6 +221,7 @@ function resetMoves() {
     move = 0;
     movesText = document.querySelector('.moves');
     movesText.innerHTML = move;
+    console.log('reset moves')
 }
 
 //reset stars
