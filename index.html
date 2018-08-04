@@ -14,15 +14,26 @@
         <header>
             <h1>Matching Game</h1>
         </header>
-
+        <div id="congrats" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Congratulations! You have successfully completed this memory match game! See your stats below.</p>
+                    <ul class="stats">
+                        <li><span id="modal-stars"></span> Stars</li>
+                        <li><span class="moves"></span> Moves</li>
+                        <li><span class="timer">0:00</span></li>
+                    </ul>
+                <input type="button" onclick="reset()" value="Play again"></input>
+            </div>
+        </div>
         <section class="score-panel">
-        	<ul class="stars">
+        	<ul class="stars" id="stars">
         		<li><i class="fa fa-star"></i></li>
         		<li><i class="fa fa-star"></i></li>
         		<li><i class="fa fa-star"></i></li>
         	</ul>
-            <span id="timer">0:00</span>
-        	<span id="moves">3</span> Moves
+            <span class="timer">0:00</span>
+        	<span class="moves">0</span> Moves
 
             <div class="restart">
         		<i class="fa fa-repeat"></i>
@@ -82,5 +93,18 @@
     </div>
 
     <script src="js/app.js"></script>
+    <!-- Trigger/Open The Modal -->
+    <button id="myBtn">Open Modal</button>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+
+</div>
 </body>
 </html>
